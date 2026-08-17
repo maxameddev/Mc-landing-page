@@ -1,3 +1,5 @@
+import TelegramButton from './TelegramButton'
+
 const topics = [
   {
     title: 'Crypto Fundamentals',
@@ -20,7 +22,7 @@ const topics = [
   {
     title: 'Risk Management',
     description:
-      'Learn educational principles for managing risk and making informed decisions.',
+      'Learn educational principles for understanding and managing risk.',
     icon: RiskIcon,
   },
   {
@@ -35,36 +37,48 @@ export default function LearningSection() {
   return (
     <section
       aria-labelledby="learning-heading"
-      className="relative px-6 py-24 sm:px-8 lg:px-12"
+      className="relative px-6 py-20 sm:px-8 sm:py-24 lg:px-12"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+        <div className="mb-14 text-center sm:mb-16">
+          <div className="mx-auto mb-5 h-px w-12 bg-telegram/40" aria-hidden="true" />
           <h2
             id="learning-heading"
             className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl"
           >
             What You&apos;ll Learn
           </h2>
-          <p className="mx-auto max-w-xl text-slate-400">
+          <p className="mx-auto max-w-xl text-white/50">
             Educational topics designed to build your understanding step by step.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-6">
           {topics.map((topic, index) => (
             <article
               key={topic.title}
-              className={`group rounded-2xl border border-white/5 bg-navy-900/60 p-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:bg-navy-800/60 ${
+              className={`group rounded-2xl border border-white/[0.06] bg-navy-card/80 p-7 transition-all duration-300 hover:border-telegram/25 hover:bg-navy-light/60 sm:p-8 ${
                 index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'
               }`}
             >
-              <div className="mb-5 inline-flex rounded-xl bg-accent/10 p-3 text-accent transition-colors duration-300 group-hover:bg-accent/15">
+              <div className="mb-5 inline-flex rounded-xl border border-telegram/20 bg-telegram/[0.08] p-3 text-telegram transition-colors duration-300 group-hover:border-telegram/35 group-hover:bg-telegram/[0.12]">
                 <topic.icon />
               </div>
-              <h3 className="mb-3 text-lg font-semibold text-white">{topic.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-400">{topic.description}</p>
+              <h3 className="mb-3 text-lg font-semibold text-white">
+                {topic.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-white/50">
+                {topic.description}
+              </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-14 flex flex-col items-center gap-3 text-center sm:mt-16">
+          <TelegramButton showArrow>Continue Learning on Telegram</TelegramButton>
+          <p className="text-xs text-white/35 sm:text-sm">
+            Access educational content directly in our community
+          </p>
         </div>
       </div>
     </section>
